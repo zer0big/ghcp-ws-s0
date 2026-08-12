@@ -12,6 +12,20 @@ Tailspin Toys is a crowdfunding platform for games with a developer theme. The p
 
 The database is migrated and seeded automatically before `dev`/`build` (via the `predev`/`prebuild` npm scripts) and is written to the gitignored `tailspin.db` file.
 
+## Features
+
+- **Game Catalog** — Browse a collection of crowdfunding games with detailed information
+- **Game Details** — View comprehensive details for each game including ratings, descriptions, categories, and publishers
+- **Filtering** — Filter games by category and publisher to quickly find titles of interest:
+  - Select one or more categories to narrow down games
+  - Choose a publisher to see their game portfolio
+  - Combine filters for precise results
+  - Clear all filters with a button or the Escape key
+  - Real-time filtering with client-side JavaScript
+- **Responsive Design** — Mobile-first design that works across all device sizes
+- **Dark Theme** — Modern dark theme using the Tailwind slate palette
+- **Accessibility** — Follows WCAG 2.1 AA guidelines with keyboard navigation, ARIA attributes, and visible focus states
+
 ## Using this template
 
 This repository is a GitHub template. When you create a new repository from it, a one-time **Bootstrap template issues** workflow (`.github/workflows/bootstrap-issues.yml`) runs automatically on the first push to `main` and opens a set of starter issues describing suggested first features. Each issue is defined by a Markdown file in `.github/bootstrap-issues/` — the first heading becomes the issue title and the remaining content becomes the body — so you can edit, add, or remove files there to control which issues are created.
