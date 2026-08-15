@@ -31,8 +31,8 @@ test.describe('Light Mode', () => {
     // Check aria-checked is initially false
     await expect(toggle).toHaveAttribute('aria-checked', 'false');
     
-    // Check aria-label exists
-    await expect(toggle).toHaveAttribute('aria-label', 'Toggle light mode');
+    // Accessible name comes from visible button text (WCAG 2.5.3 — no separate aria-label needed)
+    await expect(toggle).toContainText('Light Mode');
   });
 
   test('should toggle light mode when clicked', async ({ page }) => {
@@ -188,6 +188,7 @@ test.describe('Light Mode', () => {
     await test.step('Verify status region exists with proper ARIA attributes', async () => {
       await expect(statusRegion).toHaveAttribute('role', 'status');
       await expect(statusRegion).toHaveAttribute('aria-live', 'polite');
+      await expect(statusRegion).toHaveAttribute('aria-atomic', 'true');
     });
 
     await test.step('Toggle on and verify announcement', async () => {

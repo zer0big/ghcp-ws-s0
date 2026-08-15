@@ -6,19 +6,6 @@ button[role="switch"][aria-checked="true"] {
   box-shadow: inset 0 0 0 2px #ffffff;
 }
 
-/* Screen reader only utility - hides content visually but keeps it accessible to assistive technology */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
 /* High Contrast Mode - WCAG AAA compliant (7:1+ contrast ratio) */
 .high-contrast {
   /* Pure black and white for maximum contrast */
@@ -102,6 +89,14 @@ button[role="switch"][aria-checked="true"] {
 .high-contrast *:focus,
 .high-contrast *:focus-visible {
   outline: 3px solid var(--hc-focus-ring) !important;
+  outline-offset: 2px;
+}
+
+/* Button focus in high contrast: button bg turns white on focus, so yellow #ffff00 would fail
+   at 1.07:1. Override to black (#000000) for 21:1 contrast against the white button background. */
+.high-contrast button:focus,
+.high-contrast button:focus-visible {
+  outline: 3px solid #000000 !important;
   outline-offset: 2px;
 }
 

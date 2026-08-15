@@ -31,8 +31,8 @@ test.describe('High Contrast Mode', () => {
     // Check aria-checked is initially false
     await expect(toggle).toHaveAttribute('aria-checked', 'false');
     
-    // Check aria-label exists
-    await expect(toggle).toHaveAttribute('aria-label', 'Toggle high contrast mode');
+    // Accessible name comes from visible button text (WCAG 2.5.3 — no separate aria-label needed)
+    await expect(toggle).toContainText('High Contrast');
   });
 
   test('should toggle high contrast mode when clicked', async ({ page }) => {
@@ -221,6 +221,7 @@ test.describe('High Contrast Mode', () => {
     await test.step('Verify status region exists with proper ARIA attributes', async () => {
       await expect(statusRegion).toHaveAttribute('role', 'status');
       await expect(statusRegion).toHaveAttribute('aria-live', 'polite');
+      await expect(statusRegion).toHaveAttribute('aria-atomic', 'true');
     });
 
     await test.step('Toggle on and verify announcement', async () => {
