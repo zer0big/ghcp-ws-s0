@@ -17,6 +17,20 @@ const { title = "Tailspin Toys" } = Astro.props;
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+        <!-- Initialize theme modes from localStorage before render to prevent flash -->
+        <script is:inline>
+          (function() {
+            // Initialize light mode
+            if (localStorage.getItem('lightMode') === 'true') {
+              document.documentElement.classList.remove('dark');
+              document.documentElement.classList.add('light');
+            }
+            // Initialize high contrast mode
+            if (localStorage.getItem('highContrast') === 'true') {
+              document.documentElement.classList.add('high-contrast');
+            }
+          })();
+        </script>
         <!-- Preconnect to improve font loading -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

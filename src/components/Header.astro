@@ -6,7 +6,7 @@ import Menu from '../assets/icons/menu.svg';
   <div class="container mx-auto flex justify-between items-center pl-4 pr-4">
     <div class="flex items-center">
       <div class="relative group">
-        <button id="menu-toggle" class="focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 rounded mr-4" aria-label="Toggle menu" aria-expanded="false" aria-controls="menu">
+        <button id="menu-toggle" class="focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 rounded mr-4" aria-label="Toggle menu" aria-expanded="false" aria-controls="menu" data-testid="menu-toggle">
           <Menu class="h-6 w-6" aria-hidden="true" />
         </button>
         <nav id="menu" aria-label="Main" class="hidden absolute left-0 mt-2 w-48 bg-white dark:bg-slate-800 text-slate-800 dark:text-white rounded shadow-lg z-10 transition-colors duration-300">
@@ -18,10 +18,140 @@ import Menu from '../assets/icons/menu.svg';
       </div>
       <div class="text-xl font-bold"><a href="/" class="hover:underline">Tailspin Toys</a></div>
     </div>
+    <div class="flex items-center gap-3">
+      <button 
+        id="light-mode-toggle" 
+        role="switch"
+        aria-checked="false"
+        aria-label="Toggle light mode"
+        class="px-4 py-2 rounded-lg bg-slate-700 text-slate-100 hover:bg-slate-600 focus:ring-2 focus:ring-white focus:outline-none transition-colors duration-200"
+        data-testid="light-mode-toggle"
+      >
+        <span id="light-mode-label">Light Mode: Off</span>
+      </button>
+      <button 
+        id="high-contrast-toggle" 
+        role="switch"
+        aria-checked="false"
+        aria-label="Toggle high contrast mode"
+        class="px-4 py-2 rounded-lg bg-slate-700 text-slate-100 hover:bg-slate-600 focus:ring-2 focus:ring-white focus:outline-none transition-colors duration-200"
+        data-testid="high-contrast-toggle"
+      >
+        <span id="high-contrast-label">High Contrast: Off</span>
+      </button>
+    </div>
   </div>
 </header>
 
 <script>
+  // High contrast mode toggle
+  const highContrastToggle = document.getElementById('high-contrast-toggle');
+  const highContrastLabel = document.getElementById('high-contrast-label');
+  
+  if (highContrastToggle && highContrastLabel) {
+    // Initialize high contrast state from localStorage
+    const isHighContrast = localStorage.getItem('highContrast') === 'true';
+    updateHighContrastMode(isHighContrast, false);
+    
+    // Toggle high contrast mode
+    highContrastToggle.addEventListener('click', () => {
+      const currentState = document.documentElement.classList.contains('high-contrast');
+      updateHighContrastMode(!currentState, true);
+    });
+    
+    // Handle keyboard activation (Enter and Space)
+    highContrastToggle.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        const currentState = document.documentElement.classList.contains('high-contrast');
+        updateHighContrastMode(!currentState, true);
+      }
+    });
+    
+    function updateHighContrastMode(enable: boolean, announce: boolean) {
+      const html = document.documentElement;
+      const toggle = highContrastToggle;
+      const label = highContrastLabel;
+      
+      if (!toggle || !label) return;
+      
+      if (enable) {
+        html.classList.add('high-contrast');
+        toggle.setAttribute('aria-checked', 'true');
+        label.textContent = 'High Contrast: On';
+        localStorage.setItem('highContrast', 'true');
+      } else {
+        html.classList.remove('high-contrast');
+        toggle.setAttribute('aria-checked', 'false');
+        label.textContent = 'High Contrast: Off';
+        localStorage.setItem('highContrast', 'false');
+      }
+      
+      // Announce state change to screen readers
+      if (announce) {
+        const status = document.getElementById('high-contrast-status');
+        if (status) {
+          status.textContent = enable ? 'High contrast mode enabled' : 'High contrast mode disabled';
+        }
+      }
+    }
+  }
+  
+  // Light mode toggle
+  const lightModeToggle = document.getElementById('light-mode-toggle');
+  const lightModeLabel = document.getElementById('light-mode-label');
+  
+  if (lightModeToggle && lightModeLabel) {
+    // Initialize light mode state from localStorage
+    const isLightMode = localStorage.getItem('lightMode') === 'true';
+    updateLightMode(isLightMode, false);
+    
+    // Toggle light mode
+    lightModeToggle.addEventListener('click', () => {
+      const currentState = document.documentElement.classList.contains('light');
+      updateLightMode(!currentState, true);
+    });
+    
+    // Handle keyboard activation (Enter and Space)
+    lightModeToggle.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        const currentState = document.documentElement.classList.contains('light');
+        updateLightMode(!currentState, true);
+      }
+    });
+    
+    function updateLightMode(enable: boolean, announce: boolean) {
+      const html = document.documentElement;
+      const toggle = lightModeToggle;
+      const label = lightModeLabel;
+      
+      if (!toggle || !label) return;
+      
+      if (enable) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        toggle.setAttribute('aria-checked', 'true');
+        label.textContent = 'Light Mode: On';
+        localStorage.setItem('lightMode', 'true');
+      } else {
+        html.classList.remove('light');
+        html.classList.add('dark');
+        toggle.setAttribute('aria-checked', 'false');
+        label.textContent = 'Light Mode: Off';
+        localStorage.setItem('lightMode', 'false');
+      }
+      
+      // Announce state change to screen readers
+      if (announce) {
+        const status = document.getElementById('light-mode-status');
+        if (status) {
+          status.textContent = enable ? 'Light mode enabled' : 'Light mode disabled';
+        }
+      }
+    }
+  }
+  
   // Toggle menu visibility when hamburger is clicked
   const menuToggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('menu');
@@ -57,3 +187,7 @@ import Menu from '../assets/icons/menu.svg';
     });
   }
 </script>
+
+<!-- Screen reader status announcements for toggles -->
+<div role="status" aria-live="polite" class="sr-only" id="light-mode-status"></div>
+<div role="status" aria-live="polite" class="sr-only" id="high-contrast-status"></div>

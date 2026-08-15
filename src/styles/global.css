@@ -1,1 +1,251 @@
 @import "tailwindcss";
+
+/* Screen reader only utility - hides content visually but keeps it accessible to assistive technology */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* High Contrast Mode - WCAG AAA compliant (7:1+ contrast ratio) */
+.high-contrast {
+  /* Pure black and white for maximum contrast */
+  --hc-bg-primary: #000000;
+  --hc-bg-secondary: #000000;
+  --hc-bg-card: #000000;
+  --hc-text-primary: #ffffff;
+  --hc-text-secondary: #ffffff;
+  --hc-border: #ffffff;
+  --hc-link: #ffff00;
+  --hc-link-hover: #ffffff;
+  --hc-focus-ring: #ffff00;
+}
+
+/* Apply high-contrast colors when .high-contrast class is present */
+.high-contrast body {
+  background-color: var(--hc-bg-primary) !important;
+  color: var(--hc-text-primary) !important;
+}
+
+.high-contrast header {
+  background-color: var(--hc-bg-secondary) !important;
+  border-bottom: 3px solid var(--hc-border) !important;
+  color: var(--hc-text-primary) !important;
+}
+
+.high-contrast nav {
+  background-color: var(--hc-bg-secondary) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+
+.high-contrast a {
+  color: var(--hc-link) !important;
+  text-decoration: underline;
+}
+
+.high-contrast a:hover,
+.high-contrast a:focus {
+  color: var(--hc-link-hover) !important;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.high-contrast button {
+  background-color: var(--hc-bg-secondary) !important;
+  color: var(--hc-text-primary) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+
+.high-contrast button:hover,
+.high-contrast button:focus {
+  background-color: var(--hc-text-primary) !important;
+  color: var(--hc-bg-primary) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+
+/* High contrast for cards and containers */
+.high-contrast [class*="bg-slate"],
+.high-contrast [class*="bg-blue"],
+.high-contrast [class*="bg-gradient"] {
+  background-color: var(--hc-bg-card) !important;
+  background-image: none !important;
+  border: 2px solid var(--hc-border) !important;
+}
+
+/* High contrast for text elements */
+.high-contrast [class*="text-slate"],
+.high-contrast [class*="text-blue"],
+.high-contrast [class*="text-gray"] {
+  color: var(--hc-text-primary) !important;
+}
+
+/* High contrast borders */
+.high-contrast [class*="border-slate"],
+.high-contrast [class*="border-blue"],
+.high-contrast [class*="border-gray"] {
+  border-color: var(--hc-border) !important;
+}
+
+/* Enhanced focus indicators in high contrast mode */
+.high-contrast *:focus,
+.high-contrast *:focus-visible {
+  outline: 3px solid var(--hc-focus-ring) !important;
+  outline-offset: 2px;
+}
+
+/* High contrast for form elements */
+.high-contrast input,
+.high-contrast select,
+.high-contrast textarea {
+  background-color: var(--hc-bg-primary) !important;
+  color: var(--hc-text-primary) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+
+/* Ensure shadows don't interfere with high contrast */
+.high-contrast [class*="shadow"] {
+  box-shadow: none !important;
+}
+
+/* Light Mode - inverts the dark theme for a bright, clean interface */
+.light {
+  /* Light mode color palette - WCAG AA compliant */
+  --light-bg-primary: #ffffff;
+  --light-bg-secondary: #f8fafc;
+  --light-bg-card: #ffffff;
+  --light-text-primary: #0f172a;
+  --light-text-secondary: #334155;
+  --light-text-muted: #475569;
+  --light-border: #e2e8f0;
+  --light-accent: #1e40af;
+  --light-accent-hover: #1e3a8a;
+  --light-link: #1d4ed8;
+}
+
+/* Apply light mode colors when .light class is present */
+.light body {
+  background-color: var(--light-bg-primary) !important;
+  color: var(--light-text-primary) !important;
+}
+
+.light header {
+  background-color: var(--light-accent) !important;
+  color: #ffffff !important;
+  border-bottom: 1px solid var(--light-border);
+}
+
+.light header a {
+  color: #ffffff !important;
+}
+
+.light header a:hover {
+  color: #f0f9ff !important;
+}
+
+.light nav {
+  background-color: var(--light-bg-card) !important;
+  color: var(--light-text-primary) !important;
+  border: 1px solid var(--light-border) !important;
+}
+
+.light a {
+  color: var(--light-link) !important;
+}
+
+.light a:hover {
+  color: var(--light-accent) !important;
+}
+
+/* Light mode for cards and containers */
+.light [class*="bg-slate-900"],
+.light [class*="bg-slate-800"] {
+  background-color: var(--light-bg-card) !important;
+  border: 1px solid var(--light-border) !important;
+}
+
+.light [class*="bg-gradient"] {
+  background-image: linear-gradient(to bottom right, #f8fafc, #f1f5f9) !important;
+}
+
+/* Light mode for text elements */
+.light [class*="text-slate-100"],
+.light [class*="text-slate-200"],
+.light [class*="text-slate-300"],
+.light [class*="text-white"] {
+  color: var(--light-text-primary) !important;
+}
+
+.light [class*="text-slate-400"],
+.light [class*="text-slate-500"] {
+  color: var(--light-text-muted) !important;
+}
+
+.light [class*="text-blue-400"] {
+  color: var(--light-link) !important;
+}
+
+/* Light mode for category tags with proper contrast */
+.light [class*="bg-blue-900"] {
+  background-color: #dbeafe !important;
+  color: #1e3a8a !important;
+}
+
+.light [class*="text-blue-300"] {
+  color: #1e3a8a !important;
+}
+
+.light [class*="bg-purple-900"] {
+  background-color: #f3e8ff !important;
+  color: #581c87 !important;
+}
+
+.light [class*="text-purple-300"] {
+  color: #581c87 !important;
+}
+
+/* Light mode borders */
+.light [class*="border-slate-700"],
+.light [class*="border-slate-600"] {
+  border-color: var(--light-border) !important;
+}
+
+/* Light mode buttons */
+.light button {
+  background-color: var(--light-accent) !important;
+  color: #ffffff !important;
+}
+
+.light button:hover {
+  background-color: var(--light-accent-hover) !important;
+}
+
+.light button * {
+  color: #ffffff !important;
+}
+
+/* Light mode with high contrast - combine both modes */
+.light.high-contrast body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.light.high-contrast [class*="text-"] {
+  color: #000000 !important;
+}
+
+.light.high-contrast a {
+  color: #0000ff !important;
+  font-weight: 600;
+}
+
+.light.high-contrast button {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 3px solid #000000 !important;
+}

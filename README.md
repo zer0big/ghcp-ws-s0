@@ -42,6 +42,52 @@ npm run build      # prebuild migrates + seeds, then builds the static site
 npm run preview
 ```
 
+## Accessibility Features
+
+Tailspin Toys is built with accessibility as a core requirement, meeting WCAG 2.1 Level AA standards:
+
+### Light Mode
+
+A light theme toggle is available in the site header for users who prefer bright interfaces. This feature:
+
+- Provides WCAG AA-compliant contrast ratios (4.5:1+ for text, 3:1+ for UI components)
+- Uses a bright white background with dark text and blue accents
+- Persists across page reloads using browser local storage
+- Is fully keyboard accessible (Tab to focus, Enter or Space to toggle)
+- Announces state changes to screen readers via `aria-live` regions
+- Uses `role="switch"` with proper `aria-checked` states
+- Works independently with high-contrast mode (both can be enabled together)
+- Optimizes tag colors for light backgrounds while maintaining contrast
+- Works across all pages including game details and about pages
+
+To enable: Click the "Light Mode: Off" button in the header, or navigate to it with Tab and press Enter or Space.
+
+### High Contrast Mode
+
+A high-contrast mode toggle is available in the site header for users who need enhanced visual contrast. This feature:
+
+- Provides WCAG AAA-level contrast ratios (7:1+) with pure black and white colors
+- Persists across page reloads using browser local storage
+- Is fully keyboard accessible (Tab to focus, Enter or Space to toggle)
+- Announces state changes to screen readers via `aria-live` regions
+- Uses `role="switch"` with proper `aria-checked` states
+- Removes visual distractions like shadows and gradients
+- Applies yellow (#FFFF00) links on black for maximum visibility
+- Works independently with light mode (both can be enabled together)
+- Works across all pages including game details and about pages
+
+To enable: Click the "High Contrast: Off" button in the header, or navigate to it with Tab and press Enter or Space.
+
+### Additional Accessibility Features
+
+- Semantic HTML with proper heading hierarchy and landmarks (`<header>`, `<main>`, `<nav>`)
+- All interactive elements are keyboard accessible
+- Visible focus indicators on all focusable elements
+- Decorative images and icons marked with `aria-hidden="true"`
+- Form inputs with associated labels
+- Skip links and logical tab order
+- Fully tested with axe-core for WCAG 2.1 Level AA compliance
+
 ## Database
 
 The SQLite database is built from `db/games.csv` — there is no live data to migrate.
