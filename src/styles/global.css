@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Toggle switch visual checked state — provides non-color visual distinction (WCAG 1.4.1, 1.3.3) */
+button[role="switch"][aria-checked="true"] {
+  background-color: #1d4ed8; /* blue-700 — visually distinct from unchecked slate-700 */
+  box-shadow: inset 0 0 0 2px #ffffff;
+}
+
 /* Screen reader only utility - hides content visually but keeps it accessible to assistive technology */
 .sr-only {
   position: absolute;
