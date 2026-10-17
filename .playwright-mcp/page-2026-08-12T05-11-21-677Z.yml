@@ -1,0 +1,96 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - button "Toggle menu" [ref=e6]
+      - link "Tailspin Toys" [ref=e10] [cursor=pointer]:
+        - /url: /
+  - main [ref=e11]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - heading "Welcome to Tailspin Toys" [level=1] [ref=e15]
+        - paragraph [ref=e16]: Find your next game! And maybe even back one! Explore our collection!
+      - generic [ref=e17]:
+        - heading "Filter Games" [level=2] [ref=e18]
+        - generic [ref=e19]:
+          - generic [ref=e20]:
+            - generic [ref=e21]: Categories
+            - generic [ref=e22]:
+              - generic [ref=e23] [cursor=pointer]:
+                - checkbox "Action" [ref=e24]
+                - generic [ref=e25]: Action
+              - generic [ref=e26] [cursor=pointer]:
+                - checkbox "Adventure" [ref=e27]
+                - generic [ref=e28]: Adventure
+              - generic [ref=e29] [cursor=pointer]:
+                - checkbox "Puzzle" [ref=e30]
+                - generic [ref=e31]: Puzzle
+              - generic [ref=e32] [cursor=pointer]:
+                - checkbox "Simulation" [ref=e33]
+                - generic [ref=e34]: Simulation
+              - generic [ref=e35] [cursor=pointer]:
+                - checkbox "Strategy" [ref=e36]
+                - generic [ref=e37]: Strategy
+          - generic [ref=e38]:
+            - generic [ref=e39]: Publisher
+            - combobox "Publisher" [active] [ref=e40] [cursor=pointer]:
+              - option "All Publishers"
+              - option "CodeForge Studios"
+              - option "DevMasters Inc."
+              - option "GitHub Games" [selected]
+              - option "Ops Interactive"
+        - generic [ref=e41]:
+          - button "Clear Filters" [ref=e42]
+          - text: 1 filter active
+      - generic [ref=e43]:
+        - heading "Featured Games" [level=2] [ref=e44]
+        - generic [ref=e46]:
+          - link "Bug Buster Brainteaser Puzzle GitHub Games Bug Buster Brainteaser tests your analytical skills with clever puzzles that simulate real-world debugging adventures. Mona empowers you to track down elusive bugs, transforming each challenge into a rewarding quest for clarity and efficiency. Support this game through our crowdfunding platform! View details" [ref=e62] [cursor=pointer]:
+            - /url: /game/7
+            - generic [ref=e65]:
+              - heading "Bug Buster Brainteaser" [level=3] [ref=e66]
+              - generic [ref=e67]:
+                - generic [ref=e68]: Puzzle
+                - generic [ref=e69]: GitHub Games
+              - paragraph [ref=e70]: Bug Buster Brainteaser tests your analytical skills with clever puzzles that simulate real-world debugging adventures. Mona empowers you to track down elusive bugs, transforming each challenge into a rewarding quest for clarity and efficiency. Support this game through our crowdfunding platform!
+              - generic [ref=e71]: View details
+          - link "Digital Debugger's Dream Adventure GitHub Games Digital Debugger's Dream pioneers an immersive adventure that merges investigative quests with real-life debugging scenarios. As Mona champions your journey, each step deepens the mystery behind a cybernetic riddle waiting to be resolved. Support this game through our crowdfunding platform! View details" [ref=e160] [cursor=pointer]:
+            - /url: /game/15
+            - generic [ref=e163]:
+              - heading "Digital Debugger's Dream" [level=3] [ref=e164]
+              - generic [ref=e165]:
+                - generic [ref=e166]: Adventure
+                - generic [ref=e167]: GitHub Games
+              - paragraph [ref=e168]: Digital Debugger's Dream pioneers an immersive adventure that merges investigative quests with real-life debugging scenarios. As Mona champions your journey, each step deepens the mystery behind a cybernetic riddle waiting to be resolved. Support this game through our crowdfunding platform!
+              - generic [ref=e169]: View details
+          - link "Infrastructure Innovator Simulation GitHub Games Infrastructure Innovator simulates a sprawling digital ecosystem that challenges you to build robust networks from scratch. With Mona’s strategic tips, you’ll design and implement systems that stand up to relentless virtual stress tests. Support this game through our crowdfunding platform! View details" [ref=e174] [cursor=pointer]:
+            - /url: /game/11
+            - generic [ref=e177]:
+              - heading "Infrastructure Innovator" [level=3] [ref=e178]
+              - generic [ref=e179]:
+                - generic [ref=e180]: Simulation
+                - generic [ref=e181]: GitHub Games
+              - paragraph [ref=e182]: Infrastructure Innovator simulates a sprawling digital ecosystem that challenges you to build robust networks from scratch. With Mona’s strategic tips, you’ll design and implement systems that stand up to relentless virtual stress tests. Support this game through our crowdfunding platform!
+              - generic [ref=e183]: View details
+          - link "Repo Rampart Action GitHub Games Repo Rampart immerses you in adrenaline-charged defense missions where every command must protect your precious codebases. With Mona leading your strategy, prevent intrusions and execute swift countermeasures in electrifying action sequences. Support this game through our crowdfunding platform! View details" [ref=e230] [cursor=pointer]:
+            - /url: /game/19
+            - generic [ref=e233]:
+              - heading "Repo Rampart" [level=3] [ref=e234]
+              - generic [ref=e235]:
+                - generic [ref=e236]: Action
+                - generic [ref=e237]: GitHub Games
+              - paragraph [ref=e238]: Repo Rampart immerses you in adrenaline-charged defense missions where every command must protect your precious codebases. With Mona leading your strategy, prevent intrusions and execute swift countermeasures in electrifying action sequences. Support this game through our crowdfunding platform!
+              - generic [ref=e239]: View details
+          - link "Server Siege Strategy GitHub Games Server Siege throws you into the midst of a digital fortress under siege by relentless cyber threats. As Mona rallies your defense, you'll coordinate load-balancers and version controls to fortify your network stronghold. Support this game through our crowdfunding platform! View details" [ref=e272] [cursor=pointer]:
+            - /url: /game/3
+            - generic [ref=e275]:
+              - heading "Server Siege" [level=3] [ref=e276]
+              - generic [ref=e277]:
+                - generic [ref=e278]: Strategy
+                - generic [ref=e279]: GitHub Games
+              - paragraph [ref=e280]: Server Siege throws you into the midst of a digital fortress under siege by relentless cyber threats. As Mona rallies your defense, you'll coordinate load-balancers and version controls to fortify your network stronghold. Support this game through our crowdfunding platform!
+              - generic [ref=e281]: View details
+  - generic [ref=e343]:
+    - button [ref=e344]
+    - button [ref=e350]
+    - button [ref=e354]
+    - button [ref=e362]

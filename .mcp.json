@@ -7,10 +7,11 @@
     "playwright": {
       "command": "npx",
       "args": [
-        "@playwright/mcp@latest"
+        "@playwright/mcp@latest",
+        "--headless"
       ]
     },
-     "astro-docs": {
+    "astro-docs": {
       "type": "http",
       "url": "https://mcp.docs.astro.build/mcp"
     }

@@ -1,4 +1,4 @@
-import { eq, asc } from 'drizzle-orm';
+import { eq, asc, inArray, and, SQL } from 'drizzle-orm';
 import type { Database } from './db';
 import { games, categories, publishers } from '../../db/schema';
 import type { Game } from '../types/game';
@@ -66,4 +66,46 @@ export async function getAllGameIds(db: Database): Promise<number[]> {
 export async function getGameById(db: Database, id: number): Promise<Game | null> {
     const row = await baseGamesQuery(db).where(eq(games.id, id)).get();
     return row ? mapGame(row) : null;
+}
+
+/**
+ * Filters for querying games by category and/or publisher.
+ */
+export interface GameFilters {
+    /** Filter by one or more category IDs. */
+    categoryIds?: number[];
+    /** Filter by one or more publisher IDs. */
+    publisherIds?: number[];
+}
+
+/**
+ * Get all games matching the provided filters, ordered by title.
+ * If no filters are provided, returns all games.
+ *
+ * @param db - The Drizzle database client used to run the query.
+ * @param filters - Optional category and publisher filters.
+ * @returns A promise resolving to filtered games in title order.
+ */
+export async function getFilteredGames(
+    db: Database,
+    filters?: GameFilters
+): Promise<Game[]> {
+    const conditions: SQL[] = [];
+
+    if (filters?.categoryIds && filters.categoryIds.length > 0) {
+        conditions.push(inArray(games.categoryId, filters.categoryIds));
+    }
+
+    if (filters?.publisherIds && filters.publisherIds.length > 0) {
+        conditions.push(inArray(games.publisherId, filters.publisherIds));
+    }
+
+    let query = baseGamesQuery(db);
+
+    if (conditions.length > 0) {
+        query = query.where(and(...conditions));
+    }
+
+    const rows = await query.orderBy(asc(games.title));
+    return rows.map(mapGame);
 }
